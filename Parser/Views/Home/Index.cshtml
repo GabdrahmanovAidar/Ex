@@ -1,0 +1,24 @@
+﻿@model UrlVM
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <form method="post">
+            <p>URL:</p>
+            <input asp-for="UrlBody.Url" type="text" size="40" />
+            <p>Глубина:</p>
+            <input asp-for="depth" type="number" />            
+            <input type="submit" value="Искать" />
+    </form>
+
+@if (ViewBag.list != null)
+{
+    <h2>Найденные url:</h2>
+    @foreach (var url in ViewBag.list)
+    {
+        <p>@url</p>
+    }
+    <a asp-action="Save" asp-route-list="@ViewBag.list">Сохранить</a>
+}
+
+
